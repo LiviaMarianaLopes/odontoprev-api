@@ -3,17 +3,17 @@ package br.com.fiap.odontoprev.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TB_BAIRRO")
+@Table(name = "OP_BAIRRO")
 public class Bairro {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome")
+    @Column(name = "NOME_BAIRRO")
     private String nome;
 
     @ManyToOne
-    @JoinColumn(name = "cod_cidade", referencedColumnName = "id")
+    @JoinColumn(name = "ID_CIDADE", referencedColumnName = "id")
     private Cidade cidade;
 
     public Long getId() {

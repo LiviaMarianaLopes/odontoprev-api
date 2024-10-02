@@ -4,37 +4,40 @@ import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "TB_DENTISTA")
+@Table(name = "OP_DENTISTA")
 public class Dentista {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome")
+    @Column(name = "NOME_DENTISTA")
     private String nome;
 
     @Column(name = "cro")
     private String cro;
 
-    @Column(name = "data_nascimento")
+    @Column(name = "data_de_nascimento")
     private Date dataNascimento;
-
-    @Column(name = "genero")
-    private char genero;
-
-    @Column(name = "email")
+    @Column(name = "EMAIL_DENTISTA")
     private String email;
+    @Column(name = "CPF_DENTISTA")
+    private Long cpf;
+    @ManyToOne
+    @JoinColumn(name = "id_genero", referencedColumnName = "id")
+    private Genero genero;
 
-    @Column(name = "telefone")
-    private String telefone;
+    @Column(name = "telefone_dentista")
+    private Long telefone;
 
     @ManyToOne
-    @JoinColumn(name = "cod_endereco", referencedColumnName = "id")
+    @JoinColumn(name = "ID_ENDERECO", referencedColumnName = "id")
     private Endereco endereco;
 
     @OneToOne
     @JoinColumn(name = "id_login", referencedColumnName = "id")
     private Login login;
+    @Column(name = "DENTISTA_SUSPEITO")
+    private String suspeito;
 
     public Long getId() {
         return id;
@@ -68,14 +71,6 @@ public class Dentista {
         this.dataNascimento = dataNascimento;
     }
 
-    public char getGenero() {
-        return genero;
-    }
-
-    public void setGenero(char genero) {
-        this.genero = genero;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -84,11 +79,27 @@ public class Dentista {
         this.email = email;
     }
 
-    public String getTelefone() {
+    public Long getCpf() {
+        return cpf;
+    }
+
+    public void setCpf(Long cpf) {
+        this.cpf = cpf;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
+    }
+
+    public Long getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(Long telefone) {
         this.telefone = telefone;
     }
 
@@ -106,5 +117,13 @@ public class Dentista {
 
     public void setLogin(Login login) {
         this.login = login;
+    }
+
+    public String getSuspeito() {
+        return suspeito;
+    }
+
+    public void setSuspeito(String suspeito) {
+        this.suspeito = suspeito;
     }
 }

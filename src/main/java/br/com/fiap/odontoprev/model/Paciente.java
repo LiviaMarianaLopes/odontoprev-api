@@ -4,37 +4,37 @@ import jakarta.persistence.*;
 import java.sql.Date;
 
 @Entity
-@Table(name = "TB_PACIENTE")
+@Table(name = "OP_PACIENTE")
 public class Paciente {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome")
+    @Column(name = "nome_paciente")
     private String nome;
 
-    @Column(name = "data_nascimento")
+    @Column(name = "data_de_nascimento")
     private Date dataNascimento;
 
-    @Column(name = "genero")
-    private char genero;
-
-    @Column(name = "email")
+    @Column(name = "email_paciente")
     private String email;
-
-    @Column(name = "telefone")
-    private String telefone;
-
-    @Column(name = "cpf")
-    private String cpf;
+    @Column(name = "CPF_PACIENTE")
+    private Long cpf;
+    @Column(name = "telefone_paciente")
+    private Long telefone;
+    @ManyToOne
+    @JoinColumn(name = "id_genero", referencedColumnName = "id")
+    private Genero genero;
 
     @ManyToOne
-    @JoinColumn(name = "cod_endereco", referencedColumnName = "id")
+    @JoinColumn(name = "id_endereco", referencedColumnName = "id")
     private Endereco endereco;
 
     @OneToOne
     @JoinColumn(name = "id_login", referencedColumnName = "id")
     private Login login;
+    @Column(name = "CLIENTE_SUSPEITO")
+    private String suspeito;
 
     public Long getId() {
         return id;
@@ -60,14 +60,6 @@ public class Paciente {
         this.dataNascimento = dataNascimento;
     }
 
-    public char getGenero() {
-        return genero;
-    }
-
-    public void setGenero(char genero) {
-        this.genero = genero;
-    }
-
     public String getEmail() {
         return email;
     }
@@ -76,20 +68,28 @@ public class Paciente {
         this.email = email;
     }
 
-    public String getTelefone() {
-        return telefone;
-    }
-
-    public void setTelefone(String telefone) {
-        this.telefone = telefone;
-    }
-
-    public String getCpf() {
+    public Long getCpf() {
         return cpf;
     }
 
-    public void setCpf(String cpf) {
+    public void setCpf(Long cpf) {
         this.cpf = cpf;
+    }
+
+    public Long getTelefone() {
+        return telefone;
+    }
+
+    public void setTelefone(Long telefone) {
+        this.telefone = telefone;
+    }
+
+    public Genero getGenero() {
+        return genero;
+    }
+
+    public void setGenero(Genero genero) {
+        this.genero = genero;
     }
 
     public Endereco getEndereco() {
@@ -106,5 +106,13 @@ public class Paciente {
 
     public void setLogin(Login login) {
         this.login = login;
+    }
+
+    public String getSuspeito() {
+        return suspeito;
+    }
+
+    public void setSuspeito(String suspeito) {
+        this.suspeito = suspeito;
     }
 }

@@ -3,7 +3,7 @@ package br.com.fiap.odontoprev.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TB_LOGIN")
+@Table(name = "OP_LOGIN")
 public class Login {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

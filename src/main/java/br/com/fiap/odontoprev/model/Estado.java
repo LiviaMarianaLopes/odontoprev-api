@@ -3,16 +3,16 @@ package br.com.fiap.odontoprev.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TB_ESTADO")
+@Table(name = "OP_ESTADO")
 public class Estado {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome")
+    @Column(name = "NOME_ESTADO")
     private String nome;
 
-    @Column(name = "sigla")
+    @Column(name = "SIGLA_ESTADO")
     private String sigla;
 
     public Long getId() {

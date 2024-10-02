@@ -5,26 +5,24 @@ import jakarta.persistence.*;
 import java.sql.Timestamp;
 
 @Entity
-@Table(name = "TB_CONSULTA")
+@Table(name = "OP_CONSULTA")
 public class Consulta {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-    @Column(name = "motivo_consulta")
-    private Timestamp data;
     @Column(name = "data_consulta")
-    private String motivo;
+    private Timestamp data;
 
     @ManyToOne
-    @JoinColumn(name = "paciente_consulta", referencedColumnName = "id")
+    @JoinColumn(name = "ID_PACIENTE", referencedColumnName = "id")
     private Paciente paciente;
 
     @ManyToOne
-    @JoinColumn(name = "dentista_consulta", referencedColumnName = "id")
+    @JoinColumn(name = "ID_DENTISTA", referencedColumnName = "id")
     private Dentista dentista;
 
     @ManyToOne
-    @JoinColumn(name = "unidade_consulta", referencedColumnName = "id")
+    @JoinColumn(name = "ID_UNIDADE", referencedColumnName = "id")
     private Unidade unidade;
 
     public Long getId() {
@@ -41,14 +39,6 @@ public class Consulta {
 
     public void setData(Timestamp data) {
         this.data = data;
-    }
-
-    public String getMotivo() {
-        return motivo;
-    }
-
-    public void setMotivo(String motivo) {
-        this.motivo = motivo;
     }
 
     public Paciente getPaciente() {

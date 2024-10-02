@@ -3,20 +3,20 @@ package br.com.fiap.odontoprev.model;
 import jakarta.persistence.*;
 
 @Entity
-@Table(name = "TB_UNIDADE")
+@Table(name = "OP_UNIDADE")
 public class Unidade {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Column(name = "nome")
+    @Column(name = "NOME_UNIDADE")
     private String nome;
 
     @Column(name = "telefone")
-    private String telefone;
+    private int telefone;
 
     @ManyToOne
-    @JoinColumn(name = "cod_endereco", referencedColumnName = "id")
+    @JoinColumn(name = "ID_ENDERECO", referencedColumnName = "id")
     private Endereco endereco;
 
     public Long getId() {
@@ -35,11 +35,11 @@ public class Unidade {
         this.nome = nome;
     }
 
-    public String getTelefone() {
+    public int getTelefone() {
         return telefone;
     }
 
-    public void setTelefone(String telefone) {
+    public void setTelefone(int telefone) {
         this.telefone = telefone;
     }
 
