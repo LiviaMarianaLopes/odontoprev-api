@@ -3,9 +3,9 @@
 # Cronograma do Projeto
 
 ### Equipe:
-- **Lívia**: Responsável pela API em Java e DevOps.
-- **Celeste**: Responsável pela API em C# e desenvolvimento do modelo preditivo.
-- **Luana**: Responsável pelo desenvolvimento do banco de dados e compliance e quality assurance do projeto.
+- **Celeste Mayumi Pereira Tanaka**: Responsável pela API em C# e desenvolvimento do modelo preditivo.
+- **Lívia Mariana Lopes**: Responsável pela API em Java e DevOps.
+- **Luana Vieira Santos da Silva**: Responsável pelo desenvolvimento do banco de dados e compliance e quality assurance do projeto.
 - **Todas**: Responsáveis pelo desenvolvimento mobile.
 
 ---
@@ -95,7 +95,7 @@ de dados e sistemas externos.
 4. Execute o comando: `./mvnw spring-boot:run` para iniciar a aplicação.
 5. Acesse a API em `http://localhost:8080/consultas`.
 
-## 4. Diagramas da Aplicação
+## Diagramas da Aplicação
 ![Diagrama de classe](caminho/para/diagrama.png)
 ![Diagrama de Entidade e
 Relacionamento](caminho/para/diagrama.png)
@@ -199,45 +199,45 @@ Abaixo estão os prints de alguns testes realizados na API utilizando o **Postma
 ### Testes de Criação de Consulta (POST /consultas)
 
 #### Sucesso
-![Sucesso Criação](caminho/para/print_sucesso_create.png)
-
+<img width="300" src="https://github.com/LiviaMarianaLopes/odontoprev-api/blob/master/images/Captura%20de%20tela%202024-10-02%20102010.png"/>
 Teste mostrando a criação bem-sucedida de uma nova consulta no sistema.
 
 #### Erro
-![Erro Criação](caminho/para/print_erro_create.png)
+<img width="300" src="images/Captura de tela 2024-10-02 103524.png"/>
 
 Teste mostrando um erro durante a tentativa de criar uma nova consulta, devido a dados inválidos.
 
 ### Testes de Atualização de Consulta (PUT /consultas/{id})
 
 #### Sucesso
-![Sucesso Atualização](caminho/para/print_sucesso_update.png)
+<img width="300" src="images/Captura de tela 2024-10-02 103748.png"/>
 
 Teste mostrando a atualização bem-sucedida de uma consulta existente.
 
 #### Erro
-![Erro Atualização](caminho/para/print_erro_update.png)
+<img width="300" src="images/Captura de tela 2024-10-02 103827.png"/>
 
 Teste mostrando um erro durante a tentativa de atualizar uma consulta, devido a dados inválidos ou ID inexistente.
 
 ### Testes de Listagem de Consultas (GET /consultas)
 
 #### Sucesso
-![Sucesso Listagem](caminho/para/print_sucesso_read.png)
+<img width="300" src="images/Captura de tela 2024-10-02 103634.png"/>
 
 Teste mostrando a listagem de todas as consultas cadastradas.
 
 ### Testes de Consulta por ID (GET /consultas/{id})
 
 #### Sucesso
-![Sucesso Listagem por ID](caminho/para/print_sucesso_readById.png)
+<img width="300" src="images/Captura de tela 2024-10-02 103944.png"/>
 
 Teste mostrando o retorno de uma consulta específica ao buscar por ID.
 
 ### Testes de Exclusão de Consulta (DELETE /consultas/{id})
 
 #### Sucesso
-![Sucesso Exclusão](caminho/para/print_sucesso_delete.png)
+<img width="500" src="images/Captura de tela 2024-10-02 104114.png"/>
+
 
 Teste mostrando a exclusão bem-sucedida de uma consulta existente no sistema.
 
