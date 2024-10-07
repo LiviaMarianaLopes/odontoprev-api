@@ -22,11 +22,11 @@ public class Paciente {
     private Long cpf;
     @Column(name = "telefone_paciente")
     private Long telefone;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_genero", referencedColumnName = "id")
     private Genero genero;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_endereco", referencedColumnName = "id")
     private Endereco endereco;
 
