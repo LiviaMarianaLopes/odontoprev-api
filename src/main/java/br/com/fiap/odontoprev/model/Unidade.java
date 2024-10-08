@@ -15,7 +15,7 @@ public class Unidade {
     @Column(name = "telefone")
     private int telefone;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "ID_ENDERECO", referencedColumnName = "id")
     private Endereco endereco;
 

@@ -22,14 +22,14 @@ public class Dentista {
     private String email;
     @Column(name = "CPF_DENTISTA")
     private Long cpf;
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "id_genero", referencedColumnName = "id")
     private Genero genero;
 
     @Column(name = "telefone_dentista")
     private Long telefone;
 
-    @ManyToOne
+    @OneToOne
     @JoinColumn(name = "ID_ENDERECO", referencedColumnName = "id")
     private Endereco endereco;
 
