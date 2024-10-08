@@ -3,9 +3,9 @@
 # Cronograma do Projeto
 
 ### Equipe:
-- **Celeste Mayumi Pereira Tanaka**: Responsável pela API em C# e desenvolvimento do modelo preditivo.
-- **Lívia Mariana Lopes**: Responsável pela API em Java e DevOps.
-- **Luana Vieira Santos da Silva**: Responsável pelo desenvolvimento do banco de dados e compliance e quality assurance do projeto.
+- **Celeste Mayumi Pereira Tanaka** RM552865: Responsável pela API em C# e desenvolvimento do modelo preditivo.
+- **Lívia Mariana Lopes** RM552558: Responsável pela API em Java e DevOps.
+- **Luana Vieira Santos da Silva** RM552994: Responsável pelo desenvolvimento do banco de dados e compliance e quality assurance do projeto.
 - **Todas**: Responsáveis pelo desenvolvimento mobile.
 
 ---
@@ -96,23 +96,16 @@ de dados e sistemas externos.
 5. Acesse a API em `http://localhost:8080/consultas`.
 
 ## Diagramas da Aplicação
-![Diagrama de classe](caminho/para/diagrama.png)
-![Diagrama de Entidade e
-Relacionamento](caminho/para/diagrama.png)
+### Diagrama de classes
+![Diagrama de classe](./images/diagrama-de-classes.png)
+### Modelagem do banco de dados
+![Modelo relacional](./images/RelationalModel.png)
+### Desenho da arquitetura 
+![Desenho da arquitetura](./images/Diagrama-arquitetura.png)
 
 
 ##  Apresentação da Proposta Tecnológica
-[Link para o vídeo de apresentação](link-do-video)
-
-### Proposta Tecnológica
-A aplicação visa reduzir os casos de sinistros odontológicos através da coleta e análise de dados de consultas realizadas, possibilitando a identificação de pacientes e dentistas suspeitos.
-
-### Público-alvo
-O público-alvo são empresas de seguros odontológicos, como a Odontoprev, interessadas em melhorar a precisão na análise de sinistros.
-
-### Problemas que a aplicação resolve
-- Identificação de pacientes e dentistas suspeitos com base em comportamentos de sinistro.
-- Melhoria na gestão de sinistros para reduzir fraudes.
+[Link para o vídeo de apresentação](https://youtu.be/Uz4d2euEe4U )
 
 ##  Documentação dos Endpoints
 
