@@ -4,6 +4,7 @@ import br.com.fiap.odontoprev.model.Dentista;
 import br.com.fiap.odontoprev.model.Paciente;
 import br.com.fiap.odontoprev.model.Unidade;
 import com.fasterxml.jackson.annotation.JsonFormat;
+import org.springframework.hateoas.Link;
 
 import java.sql.Timestamp;
 
@@ -13,6 +14,7 @@ public record ConsultaResponse(
         Timestamp data,
         Paciente paciente,
         Dentista dentista,
-        Unidade unidade
+        Unidade unidade,
+        Link link
 ) {
 }

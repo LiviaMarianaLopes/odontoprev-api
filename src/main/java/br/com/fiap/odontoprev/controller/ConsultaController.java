@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -63,7 +64,11 @@ public class ConsultaController {
         }
         List<ConsultaResponse> listaConsultasResponse = new ArrayList<>();
         for (Consulta consulta : listaConsultas) {
-            ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consulta);
+            Link link = linkTo(
+                    methodOn(ConsultaController.class)
+                            .readConsulta(consulta.getId())
+            ).withSelfRel();
+            ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consulta, link);
             listaConsultasResponse.add(consultaResponse);
         }
         return new ResponseEntity<>(listaConsultasResponse, HttpStatus.OK);
@@ -80,7 +85,11 @@ public class ConsultaController {
         if (consultaSalva.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consultaSalva.get());
+        Link link = linkTo(
+                methodOn(ConsultaController.class)
+                        .readConsultas()
+        ).withRel("Lista de consultas");
+        ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consultaSalva.get(), link);
         return new ResponseEntity<>(consultaResponse, HttpStatus.OK);
     }
 
@@ -98,8 +107,12 @@ public class ConsultaController {
         }
         Consulta consulta = consultaMapper.requestToConsulta(consultaRequest);
         consulta.setId(id);
-        Consulta consultaAtualizado = consultaRepository.save(consulta);
-        ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consultaAtualizado);
+        Consulta consultaAtualizada = consultaRepository.save(consulta);
+        Link link = linkTo(
+                methodOn(ConsultaController.class)
+                        .readConsultas()
+        ).withRel("Lista de consultas");
+        ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consultaAtualizada, link);
         return new ResponseEntity<>(consultaResponse, HttpStatus.OK);
     }
 

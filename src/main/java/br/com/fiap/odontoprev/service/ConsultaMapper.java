@@ -10,6 +10,7 @@ import br.com.fiap.odontoprev.repository.DentistaRepository;
 import br.com.fiap.odontoprev.repository.PacienteRepository;
 import br.com.fiap.odontoprev.repository.UnidadeRepository;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.hateoas.Link;
 import org.springframework.stereotype.Service;
 
 import java.util.Optional;
@@ -38,13 +39,14 @@ public Consulta requestToConsulta(ConsultaRequest consultaRequest){
     consulta.setUnidade(unidade);
     return consulta;
 }
-    public ConsultaResponse consultaToResponse(Consulta consulta) {
+    public ConsultaResponse consultaToResponse(Consulta consulta, Link link) {
         return new ConsultaResponse(
                 consulta.getId(),
                 consulta.getData(),
                 consulta.getPaciente(),
                 consulta.getDentista(),
-                consulta.getUnidade()
+                consulta.getUnidade(),
+                link
         );
     }
 }
