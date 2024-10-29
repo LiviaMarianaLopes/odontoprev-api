@@ -88,12 +88,22 @@ de dados e sistemas externos.
 
 
 ##  Instruções para rodar a aplicação
-1. Certifique-se de ter o **Java 17+** instalado.
-2. Clone o repositório:
-`git clone https://github.com/LiviaMarianaLopes/odontoprev-api.git`
-3. Navegue até o diretório do projeto: `cd odontoprev-api-master`
-4. Execute o comando: `./mvnw spring-boot:run` para iniciar a aplicação.
-5. Acesse a API em `http://localhost:8080/consultas`.
+1. **Pré-requisitos**:
+  - Certifique-se de ter o Java 21 instalado.
+
+2. **Rodando o Projeto**:
+  - Clone o repositório:
+    ```shell
+    git clone https://github.com/LiviaMarianaLopes/odontoprev-api.git
+    ```
+  - Navegue até o diretório do projeto:
+    ```shell
+    cd odontoprev-api
+    ```
+  - Rode a aplicação diretamente pela IDE (IntelliJ ou Eclipse) 
+  - A API estará disponível em `http://localhost:8080`.
+
+---
 
 ## Diagramas da Aplicação
 ### Diagrama de classes
@@ -108,7 +118,40 @@ de dados e sistemas externos.
 [Link para o vídeo de apresentação](https://youtu.be/Uz4d2euEe4U )
 
 ##  Documentação dos Endpoints
+### Autenticação e Controle de Acesso
+Os endpoints auth/register e auth/login estão disponíveis para todos os usuários e não requerem autenticação. Após o login, o usuário recebe um token JWT para autenticação nos demais endpoints, os quais exigem que o token seja enviado no cabeçalho da requisição.
 
+### **POST** /auth/register
+- **Descrição**: Registra um novo usuário.
+- **Request Body**:
+    ```json
+    {
+      "email": "usuario@exemplo.com",
+      "senha": "sua_senha"
+    }
+    ```
+- **Respostas**:
+  - 200: Registro bem-sucedido.
+  - 400: O email já foi cadastrado.
+
+---
+
+### **POST** /auth/login
+- **Descrição**: Realiza login e retorna um token JWT.
+- **Request Body**:
+    ```json
+    {
+      "email": "usuario@exemplo.com",
+      "senha": "sua_senha"
+    }
+    ```
+- **Respostas**:
+  - 200: Login bem-sucedido, com token JWT.
+  - 400: Credenciais inválidas.
+
+---
+
+### **Consultas**
 ### **POST** /consultas
 - **Descrição**: Cria uma nova consulta
 - **Request Body**:
@@ -177,7 +220,7 @@ Os testes da API foram criados utilizando o **Postman**. Você pode importar a c
 
 ### Instruções para rodar os testes no Postman
 
-1. Faça o download do arquivo de testes [aqui](./Odontoprev.postman_collection.json).
+1. Faça o download do arquivo de testes [aqui](./Odontoprev.postman_collection_sprint2.json).
 2. Abra o **Postman**.
 3. No canto superior esquerdo, clique em **Import**.
 4. Selecione o arquivo `.json` exportado.
@@ -189,10 +232,28 @@ Os testes da API foram criados utilizando o **Postman**. Você pode importar a c
 
 Abaixo estão os prints de alguns testes realizados na API utilizando o **Postman**:
 
+### Testes de Criação de Login (POST /auth/register)
+#### Sucesso
+<img width="300" src="images/Captura de tela 2024-10-27 160231.png"/>
+
+Teste mostrando a criação bem-sucedida de um novo login.
+
+#### Erro
+<img width="300" src="images/Captura de tela 2024-10-28 173756.png"/>
+
+Teste mostrando um erro durante a tentativa de criar um novo login, devido a email já cadastrado.
+
+### Teste de realização de login (POST /auth/login)
+#### Sucesso
+<img width="300" src="images/Captura de tela 2024-10-27 160251.png"/>
+
+Teste apresentando a realização bem-sucedida de um login
+
 ### Testes de Criação de Consulta (POST /consultas)
 
 #### Sucesso
-<img width="300" src="https://github.com/LiviaMarianaLopes/odontoprev-api/blob/master/images/Captura%20de%20tela%202024-10-02%20102010.png"/>
+<img width="300" src="images/Captura de tela 2024-10-02 102010.png"/>
+
 Teste mostrando a criação bem-sucedida de uma nova consulta no sistema.
 
 #### Erro
