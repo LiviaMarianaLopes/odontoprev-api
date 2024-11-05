@@ -1,0 +1,28 @@
+services:
+  api:
+    container_name: odontoprev-api
+    build:
+      context: .
+      dockerfile: Dockerfile
+    ports:
+      - "8080:8080"
+    depends_on:
+      - oracle-db
+    environment:
+      - SPRING_DATASOURCE_URL=jdbc:oracle:thin:@//oracle.fiap.com.br:1521/ORCL
+      - SPRING_DATASOURCE_USERNAME=rm552558
+      - SPRING_DATASOURCE_PASSWORD=081204
+
+  oracle-db:
+    container_name: oracle
+    image: gvenzl/oracle-xe
+    ports:
+      - "1521:1521"
+    environment:
+      - ORACLE_PASSWORD=081204
+      - ORACLE_DATABASE=xe
+    volumes:
+      - oracle-data:/opt/oracle/oradata
+
+volumes:
+  oracle-data:
