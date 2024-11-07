@@ -42,11 +42,12 @@ public class ConsultaController {
                     content = @Content(schema = @Schema()))
     })
     @PostMapping
-    public ResponseEntity<Consulta> createConsulta(@Valid @RequestBody ConsultaRequest consultaRequest) {
+    public ResponseEntity<ConsultaResponse> createConsulta(@Valid @RequestBody ConsultaRequest consultaRequest) {
         Consulta consultaConvertida = consultaMapper.requestToConsulta(consultaRequest);
         Consulta consulta = consultaRepository.save(consultaConvertida);
         if (consulta.getId() != null) {
-            return new ResponseEntity<>(consulta, HttpStatus.CREATED);
+            ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consulta);
+            return new ResponseEntity<>(consultaResponse, HttpStatus.CREATED);
         } else {
             return new ResponseEntity<>(HttpStatus.BAD_REQUEST);
         }

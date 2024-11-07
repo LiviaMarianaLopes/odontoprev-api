@@ -1,6 +1,8 @@
 package br.com.fiap.odontoprev.model;
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.persistence.*;
+
 import java.sql.Date;
 
 @Entity
@@ -15,7 +17,7 @@ public class Dentista {
 
     @Column(name = "cro")
     private String cro;
-
+    @JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "dd/MM/yyyy")
     @Column(name = "data_de_nascimento")
     private Date dataNascimento;
     @Column(name = "EMAIL_DENTISTA")
