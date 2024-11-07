@@ -1,6 +1,7 @@
 package br.com.fiap.odontoprev.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 
@@ -21,6 +22,9 @@ public record ConsultaRequest (
 
         @NotNull(message = "O id da unidade é obrigatório")
         @Positive(message = "Id da unidade inválido")
-        long idUnidade
+        long idUnidade,
+
+        @NotBlank(message = "O motivo da consulta é obrigatório")
+        String motivo
 ){
 }

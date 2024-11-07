@@ -25,6 +25,17 @@ public class Consulta {
     @JoinColumn(name = "ID_UNIDADE", referencedColumnName = "id")
     private Unidade unidade;
 
+    @Column(name = "MOTIVO_CONSULTA")
+    private String motivo;
+
+    public String getMotivo() {
+        return motivo;
+    }
+
+    public void setMotivo(String motivo) {
+        this.motivo = motivo;
+    }
+
     public Long getId() {
         return id;
     }
