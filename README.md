@@ -211,7 +211,8 @@ Os endpoints auth/register e auth/login estão disponíveis para todos os usuár
       "data": "02/11/2024 15:30",
       "idPaciente": 1,
       "idDentista": 2,
-      "idUnidade": 3
+      "idUnidade": 3,
+      "motivo": "Consulta de rotina"
     }
     ```
 - **Respostas**:
@@ -248,7 +249,8 @@ Os endpoints auth/register e auth/login estão disponíveis para todos os usuár
       "data": "05/10/2024 10:00",
       "idPaciente": 1,
       "idDentista": 2,
-      "idUnidade": 3
+      "idUnidade": 3,
+      "motivo": "Consulta de rotina"
     }
     ```
 - **Respostas**:
