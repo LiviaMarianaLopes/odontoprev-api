@@ -1,9 +1,9 @@
 {
 	"info": {
-		"_postman_id": "86897cd4-3db0-45f0-8e75-7754beff5da3",
+		"_postman_id": "af6754ce-c189-469d-82ec-b3432f07c914",
 		"name": "Odontoprev",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "33326410"
+		"_exporter_id": "39573412"
 	},
 	"item": [
 		{
@@ -71,13 +71,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMDk5NTk5OX0.wp9E1QDdS4_2B75eeykvtxSw3yJDldOhjiZ7pKIf4B4",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"data\": \"12/11/2024 13:30\",\r\n  \"idPaciente\": 1,\r\n  \"idDentista\": 2,\r\n  \"idUnidade\": 1\r\n}",
+					"raw": "{\r\n  \"data\": \"01/12/2024 13:30\",\r\n  \"idPaciente\": 1,\r\n  \"idDentista\": 2,\r\n  \"idUnidade\": 1,\r\n  \"motivo\": \"Consulta de rotina\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -105,7 +105,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMDA2MTIxOX0.JKF9uON6GJOdRuP8KH51VZGufkv1jwof0zEkWRn8Zss",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMDk5NjY1MH0.slcSLty5_oGQQn3wibbL5QIdEI-wC3yKgcJWTxN2DYQ",
 						"type": "text"
 					}
 				],
@@ -130,13 +130,13 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMDk5NjI5MH0.P4vSAijHCGlaLjmAem3xCGlaPZBF0yolBqt0WlBpkSc",
 						"type": "text"
 					}
 				],
 				"body": {
 					"mode": "raw",
-					"raw": "{\r\n  \"data\": \"21/10/2024 15:30\",\r\n  \"idPaciente\": 1,\r\n  \"idDentista\": 1,\r\n  \"idUnidade\": 1\r\n}",
+					"raw": "{\r\n  \"data\": \"21/10/2024 15:30\",\r\n  \"idPaciente\": 1,\r\n  \"idDentista\": 1,\r\n  \"idUnidade\": 1,\r\n  \"motivo\": \"Consulta de rotina\"\r\n}",
 					"options": {
 						"raw": {
 							"language": "json"
@@ -144,7 +144,7 @@
 					}
 				},
 				"url": {
-					"raw": "http://localhost:8080/consultas/1",
+					"raw": "http://localhost:8080/consultas/21",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -152,7 +152,7 @@
 					"port": "8080",
 					"path": [
 						"consultas",
-						"1"
+						"21"
 					]
 				}
 			},
@@ -165,7 +165,7 @@
 				"header": [
 					{
 						"key": "Authorization",
-						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMDA2MTIxOX0.JKF9uON6GJOdRuP8KH51VZGufkv1jwof0zEkWRn8Zss",
+						"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJhdXRoLWFwaSIsInN1YiI6ImxpdmlhQGdtYWlsLmNvbSIsImV4cCI6MTczMDk5NTQ2Mn0.M4nM7pDeEo1Yv5iXv6RhWLvbka74NI3Hj_lwtCrpMx8",
 						"type": "text"
 					}
 				],
