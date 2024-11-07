@@ -14,6 +14,7 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import jakarta.validation.Valid;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.hateoas.EntityModel;
 import org.springframework.hateoas.Link;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -57,19 +58,25 @@ public class ConsultaController {
             @ApiResponse(responseCode = "200", description = "Busca realizada com sucesso")
     })
     @GetMapping
-    public ResponseEntity<List<ConsultaResponse>> readConsultas() {
+    public ResponseEntity<List<EntityModel<ConsultaResponse>>> readConsultas() {
         List<Consulta> listaConsultas = consultaRepository.findAll();
         if (listaConsultas.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        List<ConsultaResponse> listaConsultasResponse = new ArrayList<>();
+        List<EntityModel<ConsultaResponse>> listaConsultasResponse = new ArrayList<>();
         for (Consulta consulta : listaConsultas) {
-            Link link = linkTo(
-                    methodOn(ConsultaController.class)
-                            .readConsulta(consulta.getId())
-            ).withSelfRel();
-            ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consulta, link);
-            listaConsultasResponse.add(consultaResponse);
+            ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consulta);
+            EntityModel<ConsultaResponse> consultaModel = EntityModel.of(consultaResponse,
+                    linkTo(methodOn(ConsultaController.class)
+                            .readConsulta(consulta.getId())).withSelfRel(),
+                    linkTo(methodOn(ConsultaController.class)
+                            .delete(consulta.getId())).withRel("Deletar consulta"),
+                    linkTo(methodOn(ConsultaController.class)
+                            .update(consulta.getId(), null)).withRel("Atualizar consulta"),
+                    linkTo(methodOn(ConsultaController.class)
+                            .readConsultas()).withRel("Lista de consultas")
+            );
+            listaConsultasResponse.add(consultaModel);
         }
         return new ResponseEntity<>(listaConsultasResponse, HttpStatus.OK);
     }
@@ -80,17 +87,23 @@ public class ConsultaController {
             @ApiResponse(responseCode = "200", description = "Busca realizada com sucesso")
     })
     @GetMapping("/{id}")
-    public ResponseEntity<ConsultaResponse> readConsulta(@PathVariable Long id) {
+    public ResponseEntity<EntityModel<ConsultaResponse>> readConsulta(@PathVariable Long id) {
         Optional<Consulta> consultaSalva = consultaRepository.findById(id);
         if (consultaSalva.isEmpty()) {
             return new ResponseEntity<>(HttpStatus.NO_CONTENT);
         }
-        Link link = linkTo(
-                methodOn(ConsultaController.class)
-                        .readConsultas()
-        ).withRel("Lista de consultas");
-        ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consultaSalva.get(), link);
-        return new ResponseEntity<>(consultaResponse, HttpStatus.OK);
+        ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consultaSalva.get());
+        EntityModel<ConsultaResponse> consultaModel = EntityModel.of(consultaResponse,
+                linkTo(methodOn(ConsultaController.class)
+                        .readConsulta(id)).withSelfRel(),
+                linkTo(methodOn(ConsultaController.class)
+                        .delete(id)).withRel("Deletar consulta"),
+                linkTo(methodOn(ConsultaController.class)
+                        .update(id, null)).withRel("Atualizar consulta"),
+                linkTo(methodOn(ConsultaController.class)
+                        .readConsultas()).withRel("Lista de consultas")
+        );
+        return new ResponseEntity<>(consultaModel, HttpStatus.OK);
     }
 
     @Operation(summary = "Atualiza uma consulta já existente no banco")
@@ -108,11 +121,7 @@ public class ConsultaController {
         Consulta consulta = consultaMapper.requestToConsulta(consultaRequest);
         consulta.setId(id);
         Consulta consultaAtualizada = consultaRepository.save(consulta);
-        Link link = linkTo(
-                methodOn(ConsultaController.class)
-                        .readConsultas()
-        ).withRel("Lista de consultas");
-        ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consultaAtualizada, link);
+        ConsultaResponse consultaResponse = consultaMapper.consultaToResponse(consultaAtualizada);
         return new ResponseEntity<>(consultaResponse, HttpStatus.OK);
     }
 
