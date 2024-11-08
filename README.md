@@ -107,7 +107,7 @@ de dados e sistemas externos.
 
 ## Diagramas da Aplicação
 ### Diagrama de classes
-![Diagrama de classe](./images/diagrama-de-classes.png)
+![Diagrama de classe](./images/odontoprev-diagrama-classes-sprint2.jpg)
 ### Modelagem do banco de dados
 ![Modelo relacional](./images/RelationalModel.png)
 ### Desenho da arquitetura 
