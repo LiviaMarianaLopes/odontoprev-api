@@ -15,6 +15,6 @@ public record ConsultaResponse(
         Paciente paciente,
         Dentista dentista,
         Unidade unidade,
-        Link link
+        String motivo
 ) {
 }

@@ -37,16 +37,17 @@ public Consulta requestToConsulta(ConsultaRequest consultaRequest){
     consulta.setPaciente(paciente);
     consulta.setDentista(dentista);
     consulta.setUnidade(unidade);
+    consulta.setMotivo(consultaRequest.motivo());
     return consulta;
 }
-    public ConsultaResponse consultaToResponse(Consulta consulta, Link link) {
+    public ConsultaResponse consultaToResponse(Consulta consulta) {
         return new ConsultaResponse(
                 consulta.getId(),
                 consulta.getData(),
                 consulta.getPaciente(),
                 consulta.getDentista(),
                 consulta.getUnidade(),
-                link
+                consulta.getMotivo()
         );
     }
 }

@@ -103,8 +103,59 @@ de dados e sistemas externos.
   - Rode a aplicação diretamente pela IDE (IntelliJ ou Eclipse) 
   - A API estará disponível em `http://localhost:8080`.
 
----
+## Rodando a Aplicação com Docker Compose
 
+### Pré-requisitos
+Certifique-se de ter o Docker e o Docker Compose instalados na sua máquina. Você pode verificar isso com os seguintes comandos:
+
+```bash
+docker --version
+docker-compose --version
+````
+
+### Configuração do Docker Compose
+O arquivo docker-compose.yml configura os containers necessários para rodar a aplicação. Certifique-se de que o seu projeto esteja configurado corretamente para rodar com Docker.
+
+### Rodando a aplicação
+Para rodar a aplicação com Docker Compose, siga as instruções abaixo:
+
+1. Clone o repositório:
+
+````bash
+git clone https://github.com/LiviaMarianaLopes/odontoprev-api.git
+````
+2. Navegue até o diretório do projeto:
+
+````bash
+cd odontoprev-api
+````
+3. Construir e iniciar os containers: Para iniciar a aplicação com o Docker Compose, execute o seguinte comando:
+
+````bash
+docker-compose up --build
+````
+Esse comando irá:
+
+-  Construir as imagens do Docker, se necessário.
+-  Iniciar os containers definidos no arquivo docker-compose.yml.
+4. Acessar a aplicação: 
+
+Após a aplicação ser iniciada, ela estará disponível em `http://localhost:8080`.
+
+5. Parar os containers:
+
+Para parar os containers, execute:
+
+````bash
+docker-compose down
+````
+Isso encerrará todos os containers, mas manterá as imagens e volumes. 
+
+Se desejar remover também as imagens e volumes, use o comando abaixo:
+
+````bash
+docker-compose down --volumes --rmi all
+````
 ## Diagramas da Aplicação
 ### Diagrama de classes
 ![Diagrama de classe](./images/odontoprev-diagrama-classes-sprint2.jpg)
@@ -160,7 +211,8 @@ Os endpoints auth/register e auth/login estão disponíveis para todos os usuár
       "data": "02/11/2024 15:30",
       "idPaciente": 1,
       "idDentista": 2,
-      "idUnidade": 3
+      "idUnidade": 3,
+      "motivo": "Consulta de rotina"
     }
     ```
 - **Respostas**:
@@ -197,7 +249,8 @@ Os endpoints auth/register e auth/login estão disponíveis para todos os usuár
       "data": "05/10/2024 10:00",
       "idPaciente": 1,
       "idDentista": 2,
-      "idUnidade": 3
+      "idUnidade": 3,
+      "motivo": "Consulta de rotina"
     }
     ```
 - **Respostas**:
